@@ -98,26 +98,41 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Pagar Multa"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pagarMultaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buscarMulta">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar Multa"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarMultaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="printMulta">
           <Properties>
             <Property name="text" type="java.lang.String" value="Imprimir Multas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printMultaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="printSystemInfo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Imprimir Info del Sistema"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printSystemInfoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="salir">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

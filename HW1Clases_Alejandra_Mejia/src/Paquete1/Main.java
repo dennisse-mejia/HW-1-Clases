@@ -8,6 +8,8 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -57,14 +59,39 @@ public class Main extends javax.swing.JFrame {
         });
 
         pagarMulta.setText("Pagar Multa");
+        pagarMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagarMultaActionPerformed(evt);
+            }
+        });
 
         buscarMulta.setText("Buscar Multa");
+        buscarMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMultaActionPerformed(evt);
+            }
+        });
 
         printMulta.setText("Imprimir Multas");
+        printMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printMultaActionPerformed(evt);
+            }
+        });
 
         printSystemInfo.setText("Imprimir Info del Sistema");
+        printSystemInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printSystemInfoActionPerformed(evt);
+            }
+        });
 
         salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
@@ -118,7 +145,6 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMultaActionPerformed
-        // TODO add your handling code here:
         JTextField codigoField = new JTextField(5);
         JTextField nombreField = new JTextField(20);
         JTextField tipoField = new JTextField(10);
@@ -136,12 +162,87 @@ public class Main extends javax.swing.JFrame {
         int result = JOptionPane.showConfirmDialog(null, panel,
                 "Ingrese los datos de la multa", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            int codigo = Integer.parseInt(codigoField.getText());
-            String nombre = nombreField.getText();
-            String tipo = tipoField.getText();
-            transito.agregarMulta(codigo, nombre, tipo);
+            try {
+                int codigo = Integer.parseInt(codigoField.getText());
+                String nombre = nombreField.getText();
+                String tipo = tipoField.getText().toUpperCase();
+                // Validar que el nombre no esté vacío y sea solo letras
+                if (nombre.trim().isEmpty() || !nombre.matches("[a-zA-Z\\s]+")) {
+                    JOptionPane.showMessageDialog(null, "Nombre inválido. Solo se permiten letras y no puede estar vacío.");
+                    return;
+                }
+
+                // Validar que el tipo sea uno de los permitidos
+                if (!(tipo.equals("GRAVE") || tipo.equals("MEDIO") || tipo.equals("LEVE"))) {
+                    JOptionPane.showMessageDialog(null, "Tipo de multa inválido. Debe ser 'grave', 'medio' o 'leve'.");
+                    return;
+                }
+
+                transito.agregarMulta(codigo, nombre, tipo);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Código inválido. Por favor ingrese un número entero.");
+            }
         }
     }//GEN-LAST:event_agregarMultaActionPerformed
+
+    private void pagarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarMultaActionPerformed
+        String codigoStr = JOptionPane.showInputDialog("Ingrese el código de la multa a pagar:");
+        if (codigoStr != null && !codigoStr.isEmpty()) {
+            try {
+                int codigo = Integer.parseInt(codigoStr);
+                transito.pagarMulta(codigo);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Código inválido. Por favor ingrese un número entero.");
+            }
+        }
+    }//GEN-LAST:event_pagarMultaActionPerformed
+
+    private void buscarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMultaActionPerformed
+        String codigoStr = JOptionPane.showInputDialog("Ingrese el código de la multa a buscar:");
+        if (codigoStr != null && !codigoStr.isEmpty()) {
+            try {
+                int codigo = Integer.parseInt(codigoStr);
+                Multa multa = transito.buscarMulta(codigo);
+                if (multa != null) {
+                    JOptionPane.showMessageDialog(null, multaDetalles(multa), "Detalles de la Multa", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró una multa con el código proporcionado.");
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Código inválido. Por favor ingrese un número entero.");
+            }
+        }
+    }//GEN-LAST:event_buscarMultaActionPerformed
+
+    private void printMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printMultaActionPerformed
+        // TODO add your handling code here:
+        JTextArea textArea = new JTextArea(20, 40);
+        for (Multa multa : transito.getMultas()) {
+            if (multa != null) {
+                textArea.append(multaDetalles(multa) + "\n\n");
+            }
+        }
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        JOptionPane.showMessageDialog(null, scrollPane, "Todas las Multas", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_printMultaActionPerformed
+
+    private void printSystemInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printSystemInfoActionPerformed
+        // TODO add your handling code here:
+        String info = transito.obtenerInformacionSistema();
+        JOptionPane.showMessageDialog(null, info, "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_printSystemInfoActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
+    private String multaDetalles(Multa multa) {
+        return "Código: " + multa.getCodigo()
+                + "\nNombre del infractor: " + multa.getNombreInfractor()
+                + "\nTipo: " + multa.getTipo()
+                + "\nMonto a pagar: " + multa.getMontoPagar()
+                + "\nEstado: " + (multa.isPagada() ? "Pagada" : "Pendiente");
+    }
 
     /**
      * @param args the command line arguments

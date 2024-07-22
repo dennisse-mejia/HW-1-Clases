@@ -4,6 +4,8 @@
  */
 package Paquete1;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dennisse
@@ -33,19 +35,19 @@ public class Transito {
     // Método para agregar una nueva multa
     public void agregarMulta(int codigo, String nombre, String tipo) {
         if (contadorMultas >= multas.length) {
-            System.out.println("No hay espacio en el sistema para agregar más multas.");
+            JOptionPane.showMessageDialog(null, "No hay espacio en el sistema para agregar más multas.");
             return;
         }
 
         if (buscarMulta(codigo) != null) {
-            System.out.println("El código de la multa ya existe en el sistema.");
+            JOptionPane.showMessageDialog(null, "El código de la multa ya existe en el sistema.");
             return;
         }
 
         Multa nuevaMulta = new Multa(codigo, nombre, tipo);
         multas[contadorMultas] = nuevaMulta;
         contadorMultas++;
-        System.out.println("Multa agregada con éxito.");
+        JOptionPane.showMessageDialog(null, "Multa agregada con éxito.");
     }
 
     // Método para pagar una multa
@@ -55,10 +57,10 @@ public class Transito {
             if (!multa.isPagada()) {
                 multa.pay();
             } else {
-                System.out.println("La multa ya está pagada.");
+                JOptionPane.showMessageDialog(null, "La multa ya está pagada.");
             }
         } else {
-            System.out.println("No se encontró una multa con el código proporcionado.");
+            JOptionPane.showMessageDialog(null, "No se encontró una multa con el código proporcionado.");
         }
     }
 
@@ -92,13 +94,12 @@ public class Transito {
         }
 
         return "Cantidad de Multas generadas: " + contadorMultas
-                + "\nCantidad de Multas Pagadas: " + multasPagadas + " con un monto total de L." + montoPagado
-                + "\nCantidad de Multas pendientes de pagar: " + multasPendientes + " con un monto total de L." + montoPendiente;
+                + "\nCantidad de Multas Pagadas: " + multasPagadas + " con un monto total de Lps. " + montoPagado
+                + "\nCantidad de Multas pendientes de pagar: " + multasPendientes + " con un monto total de Lps. " + montoPendiente;
     }
 
     // Método para obtener todas las multas
     public Multa[] getMultas() {
         return multas;
     }
-
 }
