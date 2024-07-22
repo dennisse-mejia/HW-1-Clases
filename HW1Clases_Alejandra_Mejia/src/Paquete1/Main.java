@@ -45,6 +45,7 @@ public class Main extends javax.swing.JFrame {
         printMulta = new javax.swing.JButton();
         printSystemInfo = new javax.swing.JButton();
         salir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +94,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Grave L2,500 -- Medio L1,000 -- Leve L600");
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
@@ -100,15 +103,22 @@ public class Main extends javax.swing.JFrame {
             .addGroup(fondoLayout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(salir)
-                    .addComponent(printSystemInfo)
-                    .addComponent(printMulta)
-                    .addComponent(buscarMulta)
-                    .addComponent(titulo)
-                    .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(pagarMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(agregarMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(132, Short.MAX_VALUE))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(salir)
+                            .addComponent(titulo))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(pagarMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(agregarMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(printSystemInfo)
+                            .addComponent(printMulta)
+                            .addComponent(buscarMulta))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,14 +127,19 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(27, 27, 27)
                 .addComponent(agregarMulta)
-                .addGap(18, 18, 18)
-                .addComponent(pagarMulta)
-                .addGap(18, 18, 18)
-                .addComponent(buscarMulta)
-                .addGap(18, 18, 18)
-                .addComponent(printMulta)
-                .addGap(18, 18, 18)
-                .addComponent(printSystemInfo)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(pagarMulta)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarMulta)
+                        .addGap(18, 18, 18)
+                        .addComponent(printMulta)
+                        .addGap(18, 18, 18)
+                        .addComponent(printSystemInfo))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(salir)
                 .addContainerGap(70, Short.MAX_VALUE))
@@ -283,6 +298,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton agregarMulta;
     private javax.swing.JButton buscarMulta;
     private javax.swing.JPanel fondo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton pagarMulta;
     private javax.swing.JButton printMulta;
     private javax.swing.JButton printSystemInfo;
