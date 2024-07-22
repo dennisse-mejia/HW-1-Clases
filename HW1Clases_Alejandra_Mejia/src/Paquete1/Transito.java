@@ -48,4 +48,57 @@ public class Transito {
         System.out.println("Multa agregada con éxito.");
     }
 
+    // Método para pagar una multa
+    public void pagarMulta(int codigo) {
+        Multa multa = buscarMulta(codigo);
+        if (multa != null) {
+            if (!multa.isPagada()) {
+                multa.pay();
+            } else {
+                System.out.println("La multa ya está pagada.");
+            }
+        } else {
+            System.out.println("No se encontró una multa con el código proporcionado.");
+        }
+    }
+
+    // Método para imprimir la información de todas las multas
+    public void imprimirMultas() {
+        for (Multa multa : multas) {
+            if (multa != null) {
+                multa.print();
+                System.out.println();
+            }
+        }
+    }
+
+    // Método para obtener la información del sistema
+    public String obtenerInformacionSistema() {
+        int multasPagadas = 0;
+        double montoPagado = 0.0;
+        int multasPendientes = 0;
+        double montoPendiente = 0.0;
+
+        for (Multa multa : multas) {
+            if (multa != null) {
+                if (multa.isPagada()) {
+                    multasPagadas++;
+                    montoPagado += multa.getMontoPagar();
+                } else {
+                    multasPendientes++;
+                    montoPendiente += multa.getMontoPagar();
+                }
+            }
+        }
+
+        return "Cantidad de Multas generadas: " + contadorMultas
+                + "\nCantidad de Multas Pagadas: " + multasPagadas + " con un monto total de L." + montoPagado
+                + "\nCantidad de Multas pendientes de pagar: " + multasPendientes + " con un monto total de L." + montoPendiente;
+    }
+
+    // Método para obtener todas las multas
+    public Multa[] getMultas() {
+        return multas;
+    }
+
 }
