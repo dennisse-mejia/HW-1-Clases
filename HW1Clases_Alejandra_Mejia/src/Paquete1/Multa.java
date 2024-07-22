@@ -28,4 +28,42 @@ public class Multa {
         this.tipo = tipo;
         this.pagada = false;
     }
+
+    // Funciones get
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getNombreInfractor() {
+        return nombreInfractor;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public double getMontoPagar() {
+        return montoPagar;
+    }
+
+    public boolean isPagada() {
+        return pagada;
+    }
+
+    // Función para imprimir los valores de los atributos
+    public void print() {
+        String estado = pagada ? "Pagada por un monto de Lps " + montoPagar : "Multa pendiente";
+        System.out.println("Código: " + codigo);
+        System.out.println("Nombre del infractor: " + nombreInfractor);
+        System.out.println("Tipo: " + tipo);
+        System.out.println("Monto a pagar: " + montoPagar);
+        System.out.println("Estado: " + estado);
+    }
+
+    // Función para pagar la multa
+    public void pay() {
+        this.pagada = true;
+        System.out.println("Multa con Código " + codigo + " fue pagada por un monto de Lps. " + montoPagar);
+    }
+
 }
