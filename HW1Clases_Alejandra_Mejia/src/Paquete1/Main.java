@@ -4,16 +4,25 @@
  */
 package Paquete1;
 
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Dennisse
  */
 public class Main extends javax.swing.JFrame {
 
+    private Transito transito;
+
     /**
      * Creates new form Main
      */
     public Main() {
+        transito = new Transito();
         initComponents();
     }
 
@@ -26,21 +35,113 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fondo = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        agregarMulta = new javax.swing.JButton();
+        pagarMulta = new javax.swing.JButton();
+        buscarMulta = new javax.swing.JButton();
+        printMulta = new javax.swing.JButton();
+        printSystemInfo = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        titulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        titulo.setText("SISTEMA DE MULTAS");
+
+        agregarMulta.setText("Agregar Multas");
+        agregarMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarMultaActionPerformed(evt);
+            }
+        });
+
+        pagarMulta.setText("Pagar Multa");
+
+        buscarMulta.setText("Buscar Multa");
+
+        printMulta.setText("Imprimir Multas");
+
+        printSystemInfo.setText("Imprimir Info del Sistema");
+
+        salir.setText("Salir");
+
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(salir)
+                    .addComponent(printSystemInfo)
+                    .addComponent(printMulta)
+                    .addComponent(buscarMulta)
+                    .addComponent(titulo)
+                    .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(pagarMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(agregarMulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(132, Short.MAX_VALUE))
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(titulo)
+                .addGap(27, 27, 27)
+                .addComponent(agregarMulta)
+                .addGap(18, 18, 18)
+                .addComponent(pagarMulta)
+                .addGap(18, 18, 18)
+                .addComponent(buscarMulta)
+                .addGap(18, 18, 18)
+                .addComponent(printMulta)
+                .addGap(18, 18, 18)
+                .addComponent(printSystemInfo)
+                .addGap(18, 18, 18)
+                .addComponent(salir)
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void agregarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMultaActionPerformed
+        // TODO add your handling code here:
+        JTextField codigoField = new JTextField(5);
+        JTextField nombreField = new JTextField(20);
+        JTextField tipoField = new JTextField(10);
+
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Código:"));
+        panel.add(codigoField);
+        panel.add(Box.createHorizontalStrut(15));
+        panel.add(new JLabel("Nombre:"));
+        panel.add(nombreField);
+        panel.add(Box.createHorizontalStrut(15));
+        panel.add(new JLabel("Tipo:"));
+        panel.add(tipoField);
+
+        int result = JOptionPane.showConfirmDialog(null, panel,
+                "Ingrese los datos de la multa", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            int codigo = Integer.parseInt(codigoField.getText());
+            String nombre = nombreField.getText();
+            String tipo = tipoField.getText();
+            transito.agregarMulta(codigo, nombre, tipo);
+        }
+    }//GEN-LAST:event_agregarMultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +179,13 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agregarMulta;
+    private javax.swing.JButton buscarMulta;
+    private javax.swing.JPanel fondo;
+    private javax.swing.JButton pagarMulta;
+    private javax.swing.JButton printMulta;
+    private javax.swing.JButton printSystemInfo;
+    private javax.swing.JButton salir;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

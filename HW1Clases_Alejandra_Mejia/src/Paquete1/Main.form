@@ -23,13 +23,103 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Component id="fondo" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Component id="fondo" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="fondo">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="salir" min="-2" max="-2" attributes="0"/>
+                      <Component id="printSystemInfo" min="-2" max="-2" attributes="0"/>
+                      <Component id="printMulta" min="-2" max="-2" attributes="0"/>
+                      <Component id="buscarMulta" min="-2" max="-2" attributes="0"/>
+                      <Component id="titulo" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="pagarMulta" alignment="0" max="32767" attributes="0"/>
+                          <Component id="agregarMulta" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="132" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="titulo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <Component id="agregarMulta" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="pagarMulta" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="buscarMulta" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="printMulta" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="printSystemInfo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="salir" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="70" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="titulo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="36" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="SISTEMA DE MULTAS"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="agregarMulta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Agregar Multas"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregarMultaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="pagarMulta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pagar Multa"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="buscarMulta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar Multa"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="printMulta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Imprimir Multas"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="printSystemInfo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Imprimir Info del Sistema"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="salir">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Salir"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>
